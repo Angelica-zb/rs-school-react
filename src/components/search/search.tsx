@@ -5,7 +5,7 @@ export default class Search extends React.Component {
   render() {
     return (
       <div className={classes.search}>
-        <input type="text" />
+        <input id="search" type="text" />
         <input type="submit" value="SEARCH" />
       </div>
     );

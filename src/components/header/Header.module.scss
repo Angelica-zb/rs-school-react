@@ -8,7 +8,9 @@ $secondary-color: rgb(161, 169, 202);
         ul {
             list-style: none;
             display: flex;
-            justify-content: space-between;
+            gap: 20px;
+            justify-content: start;
+            font-size: 1.5rem;
             li {
                 a {
                     color: #fff;

@@ -4,7 +4,6 @@ import classes from './Header.module.scss';
 
 export default class Heder extends React.Component {
   render() {
-     
     return (
       <header className={classes.header}>
         <nav>
@@ -17,7 +16,6 @@ export default class Heder extends React.Component {
             </li>
           </ul>
         </nav>
-       
       </header>
     );
   }
