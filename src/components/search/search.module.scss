@@ -1,7 +1,8 @@
 .search {
+    margin: 15px 0;
     input {
         height: 40px;
-        background: rgba(59, 88, 152, 80%);
+        background: rgba(59, 88, 152, 30%);
         outline: none;
         border: none;
         border-radius: 36px;
@@ -13,9 +14,10 @@
         cursor: pointer;
     }
     input:first-child {
-        background: #EDEDED;
+        background: rgb(190 190 190 / 49%);
     }
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
 }
