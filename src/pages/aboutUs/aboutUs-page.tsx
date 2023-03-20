@@ -2,6 +2,6 @@ import React from 'react';
 
 export default class AboutUs extends React.Component {
   render() {
-    return <h1>About Us</h1>;
+    return <h1>Something interesting about us</h1>;
   }
 }

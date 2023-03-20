@@ -13,8 +13,6 @@ $secondary-color: rgb(161, 169, 202);
             font-size: 1.5rem;
             li {
                 a {
-                    color: #fff;
-                    text-decoration: none;
                     &:hover {
                         color: $secondary-color;
                     }

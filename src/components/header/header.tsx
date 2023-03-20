@@ -1,21 +1,50 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classes from './Header.module.scss';
 
-export default class Heder extends React.Component {
+function getTitle() {
+  let title = 'Error 404';
+  const url = location.pathname;
+  if (url === '/') {
+    title = 'Main';
+  } else if (url === '/aboutus') {
+    title = 'About Us';
+  }
+  return title;
+}
+
+export default class Heder extends React.Component<object, { title?: string }> {
+  constructor(public props: object) {
+    super(props);
+    this.state = {
+      title: getTitle(),
+    };
+  }
+
+  private changeTitle(title: string): void {
+    this.setState({
+      title: title,
+    });
+  }
+
   render() {
     return (
       <header className={classes.header}>
         <nav>
           <ul>
             <li>
-              <Link to="/">Main</Link>
+              <NavLink to="/" onClick={() => this.changeTitle('Main')}>
+                Main
+              </NavLink>
             </li>
             <li>
-              <Link to="/aboutus">About Us</Link>
+              <NavLink to="/aboutus" onClick={() => this.changeTitle('About Us')}>
+                About Us
+              </NavLink>
             </li>
           </ul>
         </nav>
+        <h1>{this.state.title}</h1>
       </header>
     );
   }

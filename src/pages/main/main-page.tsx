@@ -7,7 +7,6 @@ export default class Main extends React.Component {
   render() {
     return (
       <>
-        <h1>Main</h1>
         <section>
           <Search />
           <AllCards cards={CardData} />
