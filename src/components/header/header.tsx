@@ -13,7 +13,7 @@ function getTitle() {
   return title;
 }
 
-export default class Heder extends React.Component<object, { title?: string }> {
+export default class Header extends React.Component<object, { title?: string }> {
   constructor(public props: object) {
     super(props);
     this.state = {
