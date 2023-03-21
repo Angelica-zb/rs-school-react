@@ -20,20 +20,8 @@ export default class Search extends React.Component<object, ISearch> {
     });
   }
 
-  saveTextSearch = () => {
-    localStorage.setItem('LocalStorageSearch', `${this.state.textSearch}`);
-  };
-
-  componentDidMount() {
-    window.addEventListener('beforeunload', this.saveTextSearch);
-  }
-
-  componentWillUnmount(): void {
-    window.removeEventListener('beforeunload', this.saveTextSearch);
-  }
-
   public componentDidUpdate(): void {
-    this.saveTextSearch();
+    localStorage.setItem('LocalStorageSearch', `${this.state.textSearch}`);
   }
 
   render() {
