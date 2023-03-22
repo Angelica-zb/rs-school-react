@@ -19,11 +19,10 @@ export default class Search extends React.Component<object, ISearch> {
       textSearch: e.target.value,
     });
   }
-
-  public componentDidUpdate(): void {
+  componentWillUnmount(): void {
     localStorage.setItem('LocalStorageSearch', `${this.state.textSearch}`);
   }
-
+ 
   render() {
     const value = this.state.textSearch;
     return (
