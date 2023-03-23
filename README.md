@@ -7,3 +7,5 @@ start dev server: npm run dev
 start lint to check for errors: npm run lint
 
 build project: npm run build
+
+run test: npm run test
