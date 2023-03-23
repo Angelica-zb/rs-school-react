@@ -5,7 +5,7 @@ interface ISearch {
   textSearch: string;
 }
 
-export default class Search extends React.Component<object, ISearch> {
+class Search extends React.Component<object, ISearch> {
   constructor(props: object) {
     super(props);
     this.state = {
@@ -22,9 +22,10 @@ export default class Search extends React.Component<object, ISearch> {
   componentWillUnmount(): void {
     localStorage.setItem('LocalStorageSearch', `${this.state.textSearch}`);
   }
- 
+
   render() {
     const value = this.state.textSearch;
+
     return (
       <div className={classes.search}>
         <input id="search" type="text" value={value} onChange={this.changeText} />
@@ -33,3 +34,5 @@ export default class Search extends React.Component<object, ISearch> {
     );
   }
 }
+
+export default Search;

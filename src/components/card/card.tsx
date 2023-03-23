@@ -1,13 +1,12 @@
 import React from 'react';
-import { ICard } from '../../interfaces/interfaces';
+import { ICard } from '../../interfaces/ICardInterfaces';
 import classes from './card.module.scss';
 
 interface IOneCard {
   key: number;
   card: ICard;
 }
-
-export default class Card extends React.Component<IOneCard, object> {
+class Card extends React.Component<IOneCard, object> {
   render() {
     return (
       <div className={classes.cardItem}>
@@ -24,3 +23,5 @@ export default class Card extends React.Component<IOneCard, object> {
     );
   }
 }
+
+export default Card;

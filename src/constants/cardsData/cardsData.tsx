@@ -1,4 +1,4 @@
-import { ICard } from 'interfaces/interfaces';
+import { ICard } from 'interfaces/ICardInterfaces';
 
 export const CardData: ICard[] = [
   {

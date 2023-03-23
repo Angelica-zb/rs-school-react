@@ -15,6 +15,7 @@ describe('Card', () => {
     render(<Card key={1} card={card} />);
     expect(screen.getByRole('img').getAttribute('src')).toBe(card.image);
   });
+
   it('render correct title', () => {
     render(<Card key={1} card={card} />);
     expect(screen.getByText(card.name)).toBeTruthy();

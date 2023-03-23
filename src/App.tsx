@@ -1,5 +1,4 @@
 import './App.scss';
-import React from 'react';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router';
 import Header from './components/header/header';
@@ -7,7 +6,7 @@ import AboutUs from './pages/aboutUs/aboutUs-page';
 import Main from './pages/main/main-page';
 import Error from './pages/error/error-page';
 
-function App() {
+const App = () => {
   return (
     <>
       <Header />
@@ -18,6 +17,6 @@ function App() {
       </Routes>
     </>
   );
-}
+};
 
 export default App;

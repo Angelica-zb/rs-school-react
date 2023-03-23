@@ -3,15 +3,15 @@ import { CardData } from '../../constants/cardsData/cardsData';
 import React from 'react';
 import Search from '../../components/search/search';
 
-export default class Main extends React.Component {
+class Main extends React.Component {
   render() {
     return (
-      <>
-        <section>
-          <Search />
-          <AllCards cards={CardData} />
-        </section>
-      </>
+      <section>
+        <Search />
+        <AllCards cards={CardData} />
+      </section>
     );
   }
 }
+
+export default Main;

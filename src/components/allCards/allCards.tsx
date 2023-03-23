@@ -1,4 +1,4 @@
-import { ICard } from 'interfaces/interfaces';
+import { ICard } from 'interfaces/ICardInterfaces';
 import React from 'react';
 import Card from '../card/card';
 import classes from './allCards.module.scss';
@@ -6,8 +6,7 @@ import classes from './allCards.module.scss';
 interface IAllCards {
   cards: ICard[];
 }
-
-export default class AllCards extends React.Component<IAllCards, object> {
+class AllCards extends React.Component<IAllCards, object> {
   render() {
     return (
       <div className={classes.allCards}>
@@ -18,3 +17,5 @@ export default class AllCards extends React.Component<IAllCards, object> {
     );
   }
 }
+
+export default AllCards;
