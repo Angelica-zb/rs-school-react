@@ -33,6 +33,7 @@ class FormsPage extends React.Component<object, IDataFormsValid> {
     const { errors, isValid } = this.valedation(objData);
 
     if (isValid) {
+      alert('Вы в списке');
       const copyState = this.state.dataValid;
       copyState.push(objData);
       this.setState({
