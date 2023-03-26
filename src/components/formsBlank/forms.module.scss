@@ -1,0 +1,32 @@
+.formsContainer {
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(59, 88, 152, 0.3);
+    padding: 50px;
+    border-radius: 20px;
+    width: 70%;
+    gap: 10px;
+}
+
+.none {
+    color: red;
+    opacity: 0;
+}
+
+.active {
+    font-size: 12px;
+    color: red;
+    opacity: 1;
+}

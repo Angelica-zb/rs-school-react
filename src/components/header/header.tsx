@@ -11,6 +11,8 @@ const getTitle = () => {
     title = pageData.pageTitle[0];
   } else if (url === pageData.pagePath[1]) {
     title = pageData.pageTitle[1];
+  } else if (url === pageData.pagePath[2]) {
+    title = pageData.pageTitle[3];
   }
 
   return title;
@@ -51,9 +53,17 @@ class Header extends React.Component<object, { title?: string }> {
                 About Us
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to={pageData.pagePath[2]}
+                onClick={() => this.changeTitle(pageData.pageTitle[3])}
+              >
+                Forms
+              </NavLink>
+            </li>
           </ul>
         </nav>
-        <h1>{this.state.title}</h1>
+        <h2>{this.state.title}</h2>
       </header>
     );
   }
