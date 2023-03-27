@@ -1,4 +1,3 @@
-// import UserCard from '../../components/userCard/userCard';
 import { IErrors, IForms } from '../../interfaces/ICardInterfaces';
 import React from 'react';
 import Forms from '../../components/formsBlank/forms';
@@ -8,7 +7,6 @@ interface IDataFormsValid {
   dataValid: Array<IForms>;
   clear: boolean;
   errors: IErrors;
-  // showMessage: boolean;
 }
 
 class FormsPage extends React.Component<object, IDataFormsValid> {
@@ -25,7 +23,6 @@ class FormsPage extends React.Component<object, IDataFormsValid> {
         male: false,
         agreement: false,
       },
-      //   showMessage: false,
     };
   }
 

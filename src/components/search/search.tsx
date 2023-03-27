@@ -28,7 +28,13 @@ class Search extends React.Component<object, ISearch> {
 
     return (
       <div className={classes.search}>
-        <input id="search" type="text" value={value} onChange={this.changeText} />
+        <input
+          id="search"
+          placeholder="Введите текст"
+          type="text"
+          value={value}
+          onChange={this.changeText}
+        />
         <input type="submit" value="SEARCH" />
       </div>
     );
