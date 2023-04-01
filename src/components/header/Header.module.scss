@@ -1,0 +1,23 @@
+$primary-color: #3b5998;
+$secondary-color: rgb(161, 169, 202);
+.header {
+    background-color: $primary-color;
+    color: #fff;
+    padding: 1rem;
+    nav {
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            justify-content: start;
+            font-size: 1.5rem;
+            li {
+                a {
+                    &:hover {
+                        color: $secondary-color;
+                    }
+                }
+            }
+        }
+    }
+}
