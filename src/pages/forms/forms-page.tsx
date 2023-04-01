@@ -27,19 +27,19 @@ class FormsPage extends React.Component<object, IDataFormsValid> {
   }
 
   sendValid = (objData: IForms) => {
-    const { errors, isValid } = this.valedation(objData);
+    const { errors, isValid } = this.validation(objData);
 
     if (isValid) {
       alert('Вы в списке');
-      const copyState = this.state.dataValid;
-      copyState.push(objData);
+      const copyDataValid = [...this.state.dataValid];
+      copyDataValid.push(objData);
       this.setState({
         errors: errors,
       });
 
       setTimeout(() => {
         this.setState({
-          dataValid: copyState,
+          dataValid: copyDataValid,
           clear: true,
         });
       }, 1000);
@@ -50,7 +50,7 @@ class FormsPage extends React.Component<object, IDataFormsValid> {
     }
   };
 
-  valedation = (objData: IForms) => {
+  validation = (objData: IForms) => {
     let isValid = true;
     const errors: IErrors = {
       name: true,
@@ -61,22 +61,22 @@ class FormsPage extends React.Component<object, IDataFormsValid> {
       agreement: true,
     };
 
-    if (objData.name.length > 3) {
+    if (objData.name.length > 2) {
       errors.name = false;
     } else {
       isValid = false;
     }
-    if (objData.foto !== '') {
+    if (objData.foto) {
       errors.foto = false;
     } else {
       isValid = false;
     }
-    if (objData.fruit !== '') {
+    if (objData.fruit) {
       errors.fruit = false;
     } else {
       isValid = false;
     }
-    if (objData.male !== '') {
+    if (objData.male) {
       errors.male = false;
     } else {
       isValid = false;

@@ -6,6 +6,7 @@ import classes from './allCards.module.scss';
 interface IAllCards {
   cards: ICard[];
 }
+
 class AllCards extends React.Component<IAllCards, object> {
   render() {
     return (

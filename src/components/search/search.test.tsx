@@ -2,7 +2,7 @@ import { render, fireEvent } from '@testing-library/react';
 import Search from './search';
 
 describe('Search', () => {
-  test('renders correctly', () => {
+  test('should renders correctly', () => {
     const { getByText, getByPlaceholderText } = render(<Search />);
     const searchInput = getByPlaceholderText('Введите текст');
     const searchButton = getByText('SEARCH');
@@ -10,14 +10,14 @@ describe('Search', () => {
     expect(searchButton).toBeInTheDocument();
   });
 
-  test('updates input value when typed in', () => {
+  test('should updates input value when typed in', () => {
     const { getByPlaceholderText } = render(<Search />);
     const searchInput = getByPlaceholderText('Введите текст') as HTMLInputElement;
     fireEvent.change(searchInput, { target: { value: 'testing' } });
     expect(searchInput.value).toBe('testing');
   });
 
-  test('saves input value to localStorage on component unmount', () => {
+  test('should saves input value to localStorage on component unmount', () => {
     const { getByPlaceholderText, unmount } = render(<Search />);
     const searchInput = getByPlaceholderText('Введите текст');
     fireEvent.change(searchInput, { target: { value: 'testing' } });

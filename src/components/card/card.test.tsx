@@ -10,12 +10,12 @@ describe('Card', () => {
     image: 'https://m.dom-eda.com/uploads/images/catalog/item/86df51de21/c25c94fe96_500.jpg',
   };
 
-  it('render correct img', () => {
+  it('should render correct img', () => {
     render(<Card key={1} card={card} />);
     expect(screen.getByRole('img').getAttribute('src')).toBe(card.image);
   });
 
-  it('render correct title', () => {
+  it('should render correct title', () => {
     render(<Card key={1} card={card} />);
     expect(screen.getByText(card.name)).toBeTruthy();
   });

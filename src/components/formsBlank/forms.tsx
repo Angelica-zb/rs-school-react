@@ -30,14 +30,17 @@ class Forms extends React.Component<IDataForms> {
       agreement: false,
     };
     event.preventDefault();
+
     if (this.nameRef.current?.value) {
       objData.name = this.nameRef.current.value;
     }
+
     if (this.fotoRef.current?.value) {
       objData.foto = this.fotoRef.current!.files?.length
         ? URL.createObjectURL(this.fotoRef.current!.files![0])
         : '';
     }
+
     if (this.birthRef.current?.value) {
       objData.birth = this.birthRef.current.value;
     }
@@ -45,16 +48,19 @@ class Forms extends React.Component<IDataForms> {
     if (this.fruitRef.current?.value) {
       objData.fruit = this.fruitRef.current.value;
     }
+
     if (this.maleRef.current?.checked) {
       objData.male = this.maleRef.current.value;
     }
+
     if (this.femaleRef.current?.checked) {
       objData.male = this.femaleRef.current.value;
     }
+
     if (this.agreementRef.current?.value) {
       objData.agreement = this.agreementRef.current.checked;
     }
-    console.log(objData);
+
     this.props.onClick(objData);
   };
   componentDidUpdate(): void {

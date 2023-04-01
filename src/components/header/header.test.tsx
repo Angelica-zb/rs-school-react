@@ -1,10 +1,9 @@
-import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import Header from './header';
 
 describe('Header', () => {
-  it('render correct link', () => {
+  it('should render correct link', () => {
     render(
       <Router>
         <Header />

@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 
 import { IForms } from '../../interfaces/ICardInterfaces';
@@ -14,7 +13,7 @@ describe('UserCard', () => {
     agreement: true,
   };
 
-  it('renders correctly', () => {
+  it('should renders correctly', () => {
     const { getByAltText, getByText } = render(<UserCard formaValid={mockFormData} />);
     expect(getByAltText('foto')).toBeInTheDocument();
     expect(getByText('Имя:John Doe')).toBeInTheDocument();
