@@ -104,21 +104,23 @@ const Forms = (formData: IFormDataPage) => {
           {errors?.birth && <p>{errors?.birth?.message?.toString() || 'Введите дату рождения'}</p>}
         </div>
         <div>
-          Выберите любимый фрукт:
-          <select
-            {...register('fruit', {
-              required: 'Фрукт не выбран',
-            })}
-          >
-            <option key="0" value="">
-              {''}
-            </option>
-            {CardData.map((card) => (
-              <option key={card.id} value={card.name}>
-                {card.name}
+          <label>
+            Выберите любимый фрукт:
+            <select
+              {...register('fruit', {
+                required: 'Фрукт не выбран',
+              })}
+            >
+              <option key="0" value="">
+                {''}
               </option>
-            ))}
-          </select>
+              {CardData.map((card) => (
+                <option key={card.id} value={card.name}>
+                  {card.name}
+                </option>
+              ))}
+            </select>
+          </label>
           <div className={classes.active}>
             {errors?.fruit && <p>{errors?.fruit?.message?.toString()}</p>}
           </div>
