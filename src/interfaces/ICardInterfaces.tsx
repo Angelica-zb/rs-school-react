@@ -5,8 +5,8 @@ export interface ICard {
   species: string;
   type: string;
   gender: string;
-  origin: objectData;
-  location: objectData;
+  origin: objectDataCard;
+  location: objectDataCard;
   image: string;
   episode: Array<string>;
   residents: Array<string>;
@@ -14,13 +14,9 @@ export interface ICard {
   created: string;
 }
 
-interface objectData {
+interface objectDataCard {
   name: string;
   url: string;
-}
-
-export interface IAllCards {
-  results: ICard[];
 }
 
 export interface IForms {

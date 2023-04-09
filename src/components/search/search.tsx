@@ -13,7 +13,7 @@ const Search = () => {
   }, [textSearch]);
 
   return (
-    <div className={classes.search}>
+    <form className={classes.search}>
       <input
         id="search"
         placeholder="Введите текст"
@@ -22,7 +22,7 @@ const Search = () => {
         onChange={changeText}
       />
       <input type="submit" value="SEARCH" />
-    </div>
+    </form>
   );
 };
 
