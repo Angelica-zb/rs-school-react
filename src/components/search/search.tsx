@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import classes from './search.module.scss';
 
-const Search = () => {
+interface ISearch {
+  onSubmitChange: (value: string) => void;
+}
+
+const Search = ({ onSubmitChange }: ISearch) => {
   const [textSearch, setSearch] = useState(localStorage.getItem('LocalStorageSearch') || '');
 
   const changeText = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -12,12 +16,14 @@ const Search = () => {
     localStorage.setItem('LocalStorageSearch', `${textSearch}`);
   }, [textSearch]);
 
-  // const submit=(e: React.ChangeEvent<HTMLFormElement>)=>{
-  //   e.preventDefault()
-  // }onSubmit={submit}
+  const submit = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const x = localStorage.getItem('LocalStorageSearch') || '';
+    onSubmitChange(x);
+  };
 
   return (
-    <form className={classes.search}>
+    <form className={classes.search} onSubmit={submit}>
       <input
         id="search"
         placeholder="Введите текст"

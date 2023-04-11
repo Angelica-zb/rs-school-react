@@ -10,7 +10,7 @@ import ErrorMessage from '../../components/errorMessage/errorMessage';
 
 const Main = () => {
   const [CardData, setCardData] = useState<ICard[]>([]);
-  const [textSearch] = useState(localStorage.getItem('LocalStorageSearch') || '');
+  const [textSearch, setTextSearch] = useState(localStorage.getItem('LocalStorageSearch') || '');
   const [idD, setId] = useState<number>(0);
   const [showModal, setShowModalt] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +22,7 @@ const Main = () => {
       setIsLoading(false);
       if (d) {
         setCardData(d);
+        setErrorMessage(false);
       } else {
         setErrorMessage(true);
         setCardData([]);
@@ -39,9 +40,14 @@ const Main = () => {
     setShowModalt(!showModal);
   };
 
+  const textSubmit = (text: string) => {
+    setTextSearch(text);
+    setIsLoading(true);
+  };
+
   return (
     <section className={classes.mainSection}>
-      <Search />
+      <Search onSubmitChange={textSubmit} />
 
       {isLoading ? (
         <Loader />
