@@ -43,8 +43,9 @@ const Main = () => {
     <section className={classes.mainSection}>
       <Search />
 
-      {isLoading ? <Loader /> : <AllCards onShowModal={onShowModal} results={CardData} />}
-      {errorMessage ? (
+      {isLoading ? (
+        <Loader />
+      ) : errorMessage ? (
         <ErrorMessage message={'Nothing found'} />
       ) : (
         <AllCards onShowModal={onShowModal} results={CardData} />
