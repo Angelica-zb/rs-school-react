@@ -6,6 +6,7 @@ import { ICard } from 'interfaces/ICardInterfaces';
 import Modal from '../../components/modal/modal';
 import classes from './main.module.scss';
 import Loader from '../../components/loader/loader';
+import ErrorMessage from '../../components/errorMessage/errorMessage';
 
 const Main = () => {
   const [CardData, setCardData] = useState<ICard[]>([]);
@@ -13,6 +14,7 @@ const Main = () => {
   const [idD, setId] = useState<number>(0);
   const [showModal, setShowModalt] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   useEffect(() => {
     const y = async () => {
@@ -21,6 +23,7 @@ const Main = () => {
       if (d) {
         setCardData(d);
       } else {
+        setErrorMessage(true);
         setCardData([]);
       }
     };
@@ -41,7 +44,11 @@ const Main = () => {
       <Search />
 
       {isLoading ? <Loader /> : <AllCards onShowModal={onShowModal} results={CardData} />}
-
+      {errorMessage ? (
+        <ErrorMessage message={'Nothing found'} />
+      ) : (
+        <AllCards onShowModal={onShowModal} results={CardData} />
+      )}
       {showModal && <Modal id={idD} active={showModal} setActive={onShowModal2} />}
     </section>
   );
