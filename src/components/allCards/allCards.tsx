@@ -11,7 +11,7 @@ const AllCards = (allCards: IAllCards) => {
   const onShowModal = (id: number) => {
     allCards.onShowModal(id);
   };
-  console.log(allCards);
+
   return (
     <div className={classes.allCards}>
       {allCards.results.map((card) => (

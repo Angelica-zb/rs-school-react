@@ -12,6 +12,10 @@ const Search = () => {
     localStorage.setItem('LocalStorageSearch', `${textSearch}`);
   }, [textSearch]);
 
+  // const submit=(e: React.ChangeEvent<HTMLFormElement>)=>{
+  //   e.preventDefault()
+  // }onSubmit={submit}
+
   return (
     <form className={classes.search}>
       <input
