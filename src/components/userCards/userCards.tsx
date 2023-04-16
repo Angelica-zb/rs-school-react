@@ -1,6 +1,6 @@
-import classes from '../userCards/userCards.module.scss';
-import { IForms } from '../../interfaces/ICardInterfaces';
 import UserCard from '../userCard/userCard';
+import { IForms } from '../../interfaces/ICardInterfaces';
+import classes from '../userCards/userCards.module.scss';
 
 const UserCards = (allCardsUserCards: { allCards: Array<IForms> }) => {
   if (allCardsUserCards.allCards.length) {

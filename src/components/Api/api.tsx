@@ -5,7 +5,6 @@ const getDataCard = async (text: string) => {
     if (!resp.ok) {
       return null;
     }
-
     return dataCard.results;
   } catch {
     return null;

@@ -1,5 +1,5 @@
-import { ICard } from '../../interfaces/ICardInterfaces';
 import Card from '../card/card';
+import { ICard } from '../../interfaces/ICardInterfaces';
 import classes from './allCards.module.scss';
 
 interface IAllCards {
@@ -22,5 +22,3 @@ const AllCards = (allCards: IAllCards) => {
 };
 
 export default AllCards;
-
-//

@@ -1,5 +1,5 @@
-import classes from '../userCard/userCard.module.scss';
 import { IForms } from '../../interfaces/ICardInterfaces';
+import classes from '../userCard/userCard.module.scss';
 
 const UserCard = (allUserCard: { formaValid: IForms }) => {
   return (

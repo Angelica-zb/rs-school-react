@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import classes from './Header.module.scss';
 import pageData from '../../constants/constants';
+import classes from './Header.module.scss';
 
 const getTitle = () => {
   let title = pageData.pageTitle[2];

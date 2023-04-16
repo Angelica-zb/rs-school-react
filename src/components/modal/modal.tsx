@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react';
 import { getCard } from '../../components/Api/api';
 import { ICard } from '../../interfaces/ICardInterfaces';
-import { useEffect, useState } from 'react';
 import classes from './modal.module.scss';
 
 interface IModal {
@@ -56,4 +56,5 @@ const Modal = (dataModal: IModal) => {
     );
   } else return null;
 };
+
 export default Modal;

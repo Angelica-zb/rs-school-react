@@ -1,12 +1,16 @@
+import { useEffect, useState } from 'react';
 import AllCards from '../../components/allCards/allCards';
 import Search from '../../components/search/search';
-import { getDataCard } from '../../components/Api/api';
-import { useEffect, useState } from 'react';
-import { ICard } from 'interfaces/ICardInterfaces';
 import Modal from '../../components/modal/modal';
-import classes from './main.module.scss';
 import Loader from '../../components/loader/loader';
 import ErrorMessage from '../../components/errorMessage/errorMessage';
+import { getDataCard } from '../../components/Api/api';
+import { ICard } from 'interfaces/ICardInterfaces';
+import classes from './main.module.scss';
+
+const textError = {
+  notFound: 'Nothing found',
+};
 
 const Main = () => {
   const [CardData, setCardData] = useState<ICard[]>([]);
@@ -52,7 +56,7 @@ const Main = () => {
       {isLoading ? (
         <Loader />
       ) : errorMessage ? (
-        <ErrorMessage message={'Nothing found'} />
+        <ErrorMessage message={textError.notFound} />
       ) : (
         <AllCards onShowModal={onShowModal} results={CardData} />
       )}

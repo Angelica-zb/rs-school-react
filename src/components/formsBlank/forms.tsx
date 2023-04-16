@@ -1,16 +1,7 @@
 import { useForm } from 'react-hook-form';
-import classes from '../formsBlank/forms.module.scss';
 import { CardData } from '../../constants/cardsData/cardsData';
 import { IForms } from '../../interfaces/ICardInterfaces';
-
-export interface IForm {
-  name: string;
-  foto: FileList | string;
-  birth: string;
-  fruit: string;
-  male: string;
-  agreement: boolean;
-}
+import classes from '../formsBlank/forms.module.scss';
 
 interface IFormDataPage {
   onSubmitPage: (card: IForms) => void;
@@ -36,7 +27,7 @@ const Forms = (formData: IFormDataPage) => {
     reValidateMode: 'onSubmit',
   });
 
-  const onSubmit = (data: IForm) => {
+  const onSubmit = (data: IForms) => {
     const { name, foto, birth, fruit, male, agreement } = data;
     const cardData = {
       name: name,

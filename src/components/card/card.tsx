@@ -6,6 +6,7 @@ interface IOneCard {
   card: ICard;
   onShowModal: (id: number) => void;
 }
+
 const Card = (oneCard: IOneCard) => {
   const onShowModal = (id: number) => {
     oneCard.onShowModal(id);

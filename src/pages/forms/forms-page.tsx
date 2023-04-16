@@ -1,7 +1,7 @@
-import { IForms } from '../../interfaces/ICardInterfaces';
-import { useState } from 'react';
 import Forms from '../../components/formsBlank/forms';
 import UserCards from '../../components/userCards/userCards';
+import { IForms } from '../../interfaces/ICardInterfaces';
+import { useState } from 'react';
 
 const FormsPage = () => {
   const [allData, setAllData] = useState<IForms[]>([]);
