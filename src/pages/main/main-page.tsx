@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import AllCards from '../../components/allCards/allCards';
 import Search from '../../components/search/search';
 import Modal from '../../components/modal/modal';
@@ -7,23 +8,27 @@ import ErrorMessage from '../../components/errorMessage/errorMessage';
 import { getDataCard } from '../../components/Api/api';
 import { ICard } from 'interfaces/ICardInterfaces';
 import classes from './main.module.scss';
+import { searchSlice } from '../../store/reducers/searchSlice';
 
 const textError = {
   notFound: 'Nothing found',
 };
 
 const Main = () => {
+  const { textSearch } = useAppSelector((state) => state.searchReducer);
+  const { isLoading } = useAppSelector((state) => state.searchReducer);
+  const { handleLoading } = searchSlice.actions;
+  const dispatch = useAppDispatch();
+
   const [CardData, setCardData] = useState<ICard[]>([]);
-  const [textSearch, setTextSearch] = useState(localStorage.getItem('LocalStorageSearch') || '');
   const [idD, setId] = useState<number>(0);
   const [showModal, setShowModalt] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(false);
 
   useEffect(() => {
     const y = async () => {
       const d = await getDataCard(textSearch);
-      setIsLoading(false);
+      dispatch(handleLoading(false));
       if (d) {
         setCardData(d);
         setErrorMessage(false);
@@ -44,14 +49,9 @@ const Main = () => {
     setShowModalt(!showModal);
   };
 
-  const textSubmit = (text: string) => {
-    setTextSearch(text);
-    setIsLoading(true);
-  };
-
   return (
     <section className={classes.mainSection}>
-      <Search onSubmitChange={textSubmit} />
+      <Search />
 
       {isLoading ? (
         <Loader />

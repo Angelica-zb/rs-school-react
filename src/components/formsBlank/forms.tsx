@@ -31,11 +31,9 @@ const Forms = (formData: IFormDataPage) => {
     const { name, foto, birth, fruit, male, agreement } = data;
     const cardData = {
       name: name,
-
       foto: URL.createObjectURL(foto[0] as Blob | MediaSource),
       birth: birth,
       fruit: fruit,
-
       male: male,
       agreement: agreement,
     };
