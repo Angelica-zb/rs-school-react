@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form';
 const Search = () => {
   const { textSearch } = useAppSelector((state) => state.searchReducer);
   const { saveSearch } = searchSlice.actions;
-  const { handleLoading } = searchSlice.actions;
   const dispatch = useAppDispatch();
 
   const { register, handleSubmit } = useForm({
@@ -18,7 +17,6 @@ const Search = () => {
   });
   const submit = (d: { text: string }) => {
     dispatch(saveSearch(d.text));
-    dispatch(handleLoading(true));
   };
   return (
     <form className={classes.search} onSubmit={handleSubmit(submit)}>

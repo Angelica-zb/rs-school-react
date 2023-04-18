@@ -1,9 +1,21 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import FormsPage from './forms-page';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { setupStore } from '../../store/store';
+
+const store = setupStore();
 
 test('form submission adds new entry to the list', async () => {
-  render(<FormsPage />);
+  render(
+    <BrowserRouter>
+      <Provider store={store}>
+        {' '}
+        <FormsPage />
+      </Provider>
+    </BrowserRouter>
+  );
 
   const nameInput = screen.getByLabelText('Введите имя:');
   const emailInput = screen.getByLabelText('Добавьте фото:');

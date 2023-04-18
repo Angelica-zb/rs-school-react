@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import { getCard } from '../../components/Api/api';
-import { ICard } from '../../interfaces/ICardInterfaces';
+import { useGetCardQuery } from '../../store/reducers/apiSlice';
 import classes from './modal.module.scss';
 
 interface IModal {
@@ -10,22 +8,13 @@ interface IModal {
 }
 
 const Modal = (dataModal: IModal) => {
-  const [CardDataShow, setCardDataShow] = useState<ICard>();
+  const { data } = useGetCardQuery(dataModal.id);
 
-  useEffect(() => {
-    const y = async () => {
-      const oneCard = await getCard(dataModal.id);
-      setCardDataShow(oneCard);
-    };
-    y();
-  }, [dataModal]);
-
-  if (CardDataShow) {
+  if (data) {
     return (
       <div
         className={classes.modalItem}
         onClick={() => {
-          console.log(dataModal.active);
           dataModal.setActive(false);
         }}
       >
@@ -43,12 +32,12 @@ const Modal = (dataModal: IModal) => {
             X
           </span>
           <div className={classes.modalConteiner}>
-            <img className={classes.modalImg} src={CardDataShow.image}></img>
+            <img className={classes.modalImg} src={data.image}></img>
             <div className={classes.descriptionCard}>
-              <p className={classes.modalTitle}>{CardDataShow.name}</p>
-              <p className={classes.modalTitle}>{CardDataShow.status}</p>
-              <p className={classes.modalTitle}>{CardDataShow.gender}</p>
-              <p className={classes.modalTitle}>{CardDataShow.type}</p>
+              <p className={classes.modalTitle}>{data.name}</p>
+              <p className={classes.modalTitle}>{data.status}</p>
+              <p className={classes.modalTitle}>{data.gender}</p>
+              <p className={classes.modalTitle}>{data.type}</p>
             </div>
           </div>
         </div>
