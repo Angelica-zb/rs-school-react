@@ -1,19 +1,26 @@
-import { ICard } from 'interfaces/ICardInterfaces';
+import { ICard } from '../../interfaces/ICardInterfaces';
 import Card from '../card/card';
 import classes from './allCards.module.scss';
 
 interface IAllCards {
-  cards: ICard[];
+  results: ICard[];
+  onShowModal: (id: number) => void;
 }
 
 const AllCards = (allCards: IAllCards) => {
+  const onShowModal = (id: number) => {
+    allCards.onShowModal(id);
+  };
+
   return (
     <div className={classes.allCards}>
-      {allCards.cards.map((card) => (
-        <Card key={card.id} card={card} />
+      {allCards.results.map((card) => (
+        <Card onShowModal={onShowModal} key={card.id} card={card} />
       ))}
     </div>
   );
 };
 
 export default AllCards;
+
+//

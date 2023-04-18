@@ -21,7 +21,3 @@ const FormsPage = () => {
 };
 
 export default FormsPage;
-
-//  <div>
-//          <UserCard />
-//         </div>

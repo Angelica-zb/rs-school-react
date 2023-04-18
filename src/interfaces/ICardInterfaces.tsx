@@ -1,9 +1,22 @@
 export interface ICard {
   id: number;
   name: string;
-  cost: number;
-  description: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: objectDataCard;
+  location: objectDataCard;
   image: string;
+  episode: Array<string>;
+  residents: Array<string>;
+  url: string;
+  created: string;
+}
+
+interface objectDataCard {
+  name: string;
+  url: string;
 }
 
 export interface IForms {
