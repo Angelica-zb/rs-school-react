@@ -3,19 +3,22 @@ import classes from './modal.module.scss';
 
 interface IModal {
   id: number;
-  active: boolean;
   setActive: (show: boolean) => void;
 }
 
-const Modal = (dataModal: IModal) => {
-  const { data } = useGetCardQuery(dataModal.id);
+const Modal = ({ id, setActive }: IModal) => {
+  const { data } = useGetCardQuery(id);
+
+  const handleClick = () => {
+    setActive(false);
+  };
 
   if (data) {
     return (
       <div
         className={classes.modalItem}
         onClick={() => {
-          dataModal.setActive(false);
+          handleClick();
         }}
       >
         <div
@@ -26,7 +29,7 @@ const Modal = (dataModal: IModal) => {
         >
           <span
             onClick={() => {
-              dataModal.setActive(false);
+              handleClick();
             }}
           >
             X
@@ -43,7 +46,9 @@ const Modal = (dataModal: IModal) => {
         </div>
       </div>
     );
-  } else return null;
+  }
+
+  return null;
 };
 
 export default Modal;

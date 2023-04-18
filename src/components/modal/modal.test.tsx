@@ -7,7 +7,7 @@ import { setupStore } from '../../store/store';
 
 const store = setupStore();
 
-describe('Modal', () => {
+describe('should not render', () => {
   test('does not render the modal when card data is not available', async () => {
     const setActive = vitest.fn();
     const { rerender } = render(

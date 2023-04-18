@@ -7,6 +7,16 @@ interface IFormDataPage {
   onSubmitPage: (card: IForms) => void;
 }
 
+const errorMessage = {
+  name: 'Введите корректное имя',
+  nameLeng: 'Минимум три буквы',
+  foto: 'Добавьте фото',
+  birth: 'Вы еще не родились',
+  fruit: 'Фрукт не выбран',
+  male: 'Пол не выбран',
+  agreement: 'Подтвердите согласие',
+};
+
 const Forms = (formData: IFormDataPage) => {
   const {
     register,
@@ -51,10 +61,10 @@ const Forms = (formData: IFormDataPage) => {
           <input
             type="text"
             {...register('name', {
-              required: 'Введите имя',
+              required: errorMessage.name,
               minLength: {
                 value: 3,
-                message: 'Mинимум три буквы',
+                message: errorMessage.nameLeng,
               },
             })}
           />
@@ -62,7 +72,7 @@ const Forms = (formData: IFormDataPage) => {
         <div className={classes.active}>
           {errors?.name && (
             <p>
-              {errors?.name?.message?.toString() || 'Введите корректное имя, минимум три буквы'}
+              {errors?.name?.message?.toString() || errorMessage.name + ' ' + errorMessage.nameLeng}
             </p>
           )}
         </div>
@@ -71,33 +81,33 @@ const Forms = (formData: IFormDataPage) => {
           <input
             type="file"
             {...register('foto', {
-              required: 'Добавьте фото',
+              required: errorMessage.foto,
             })}
           />
         </label>
         <div className={classes.active}>
-          {errors?.foto && <p>{errors?.foto?.message?.toString() || 'Добавьте фото'}</p>}
+          {errors?.foto && <p>{errors?.foto?.message?.toString() || errorMessage.foto}</p>}
         </div>
         <label>
           Введите дату рождения:
           <input
             type="date"
             {...register('birth', {
-              required: 'Введите дату рождения',
+              required: errorMessage.birth,
               validate: (value) =>
-                new Date(value).getTime() < new Date().getTime() || 'Вы еще не родились',
+                new Date(value).getTime() < new Date().getTime() || errorMessage.birth,
             })}
           />
         </label>
         <div className={classes.active}>
-          {errors?.birth && <p>{errors?.birth?.message?.toString() || 'Введите дату рождения'}</p>}
+          {errors?.birth && <p>{errors?.birth?.message?.toString() || errorMessage.birth}</p>}
         </div>
         <div>
           <label>
             Выберите любимый фрукт:
             <select
               {...register('fruit', {
-                required: 'Фрукт не выбран',
+                required: errorMessage.fruit,
               })}
             >
               <option key="0" value="">
@@ -121,7 +131,7 @@ const Forms = (formData: IFormDataPage) => {
               type="radio"
               value="male"
               {...register('male', {
-                required: 'Пол не выбран',
+                required: errorMessage.male,
               })}
             />
             Мужской
@@ -131,7 +141,7 @@ const Forms = (formData: IFormDataPage) => {
               type="radio"
               value="female"
               {...register('male', {
-                required: 'Пол не выбран',
+                required: errorMessage.male,
               })}
             />
             Женский
@@ -145,7 +155,7 @@ const Forms = (formData: IFormDataPage) => {
             <input
               type="checkbox"
               {...register('agreement', {
-                required: 'Подтвердите согласие',
+                required: errorMessage.agreement,
               })}
             />
             Согласен с обработкой данных

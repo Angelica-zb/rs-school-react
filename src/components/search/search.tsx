@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { searchSlice } from '../../store/reducers/searchSlice';
-import classes from './search.module.scss';
 import { useForm } from 'react-hook-form';
+import classes from './search.module.scss';
 
 const Search = () => {
   const { textSearch } = useAppSelector((state) => state.searchReducer);
@@ -15,9 +15,11 @@ const Search = () => {
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
   });
+
   const submit = (d: { text: string }) => {
     dispatch(saveSearch(d.text));
   };
+
   return (
     <form className={classes.search} onSubmit={handleSubmit(submit)}>
       <input id="search" placeholder="Введите текст" type="text" {...register('text')} />

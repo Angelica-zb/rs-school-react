@@ -5,8 +5,8 @@ import Search from '../../components/search/search';
 import Modal from '../../components/modal/modal';
 import Loader from '../../components/loader/loader';
 import ErrorMessage from '../../components/errorMessage/errorMessage';
-import classes from './main.module.scss';
 import { useGetDataQuery } from '../../store/reducers/apiSlice';
+import classes from './main.module.scss';
 
 const textError = {
   notFound: 'Nothing found',
@@ -37,7 +37,7 @@ const Main = () => {
       ) : (
         <AllCards onShowModal={onShowModal} results={data.results} />
       )}
-      {showModal && <Modal id={idD} active={showModal} setActive={onShowModal2} />}
+      {showModal && <Modal id={idD} setActive={onShowModal2} />}
     </section>
   );
 };
