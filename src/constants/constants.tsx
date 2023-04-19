@@ -1,6 +1,6 @@
 const pageData = {
-  pagePath: ['/', '/aboutus', '/forms'],
-  pageTitle: ['Main', 'About Us', 'Error 404', 'Forms'],
+  pagePath: { main: '/', about: '/aboutus', form: '/forms' },
+  pageTitle: { main: 'Main', about: 'About Us', error: 'Error 404', form: 'Forms' },
   formsField: ['name', 'foto', 'birth', 'fruit', 'male', 'agreement'],
 };
 

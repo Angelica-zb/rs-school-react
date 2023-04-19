@@ -21,18 +21,9 @@ interface objectDataCard {
 
 export interface IForms {
   name: string;
-  foto: string;
+  foto: FileList | string;
   birth: string;
   fruit: string;
   male: string;
-  agreement: boolean;
-}
-
-export interface IErrors {
-  name: boolean;
-  foto: boolean;
-  birth: boolean;
-  fruit: boolean;
-  male: boolean;
   agreement: boolean;
 }

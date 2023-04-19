@@ -1,6 +1,12 @@
-import { ICard } from 'interfaces/ICardInterfaces';
+interface ICardForForms {
+  id: number;
+  name: string;
+  cost: number;
+  description: string;
+  image: string;
+}
 
-export const CardData: ICard[] = [
+export const CardData: ICardForForms[] = [
   {
     id: 1,
     name: 'Яблоки',
