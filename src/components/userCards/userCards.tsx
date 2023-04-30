@@ -2,9 +2,11 @@ import UserCard from '../userCard/userCard';
 import { IForms } from '../../interfaces/ICardInterfaces';
 import classes from '../userCards/userCards.module.scss';
 
-interface IFormsAll{allCards: Array<IForms>}
+interface IFormsAll {
+  allCards: Array<IForms>;
+}
 
-const UserCards = ({allCards}:IFormsAll) => {
+const UserCards = ({ allCards }: IFormsAll) => {
   if (allCards.length) {
     return (
       <div className={classes.allCards}>
