@@ -1,5 +1,5 @@
-import { ICard } from '../../interfaces/ICardInterfaces';
 import Card from '../card/card';
+import { ICard } from '../../interfaces/ICardInterfaces';
 import classes from './allCards.module.scss';
 
 interface IAllCards {
@@ -7,20 +7,18 @@ interface IAllCards {
   onShowModal: (id: number) => void;
 }
 
-const AllCards = (allCards: IAllCards) => {
-  const onShowModal = (id: number) => {
-    allCards.onShowModal(id);
+const AllCards = ({ results, onShowModal }: IAllCards) => {
+  const handleClick = (id: number) => {
+    onShowModal(id);
   };
 
   return (
     <div className={classes.allCards}>
-      {allCards.results.map((card) => (
-        <Card onShowModal={onShowModal} key={card.id} card={card} />
+      {results.map((card) => (
+        <Card onShowModal={handleClick} key={card.id} card={card} />
       ))}
     </div>
   );
 };
 
 export default AllCards;
-
-//

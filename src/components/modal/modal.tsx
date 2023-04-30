@@ -1,32 +1,24 @@
-import { getCard } from '../../components/Api/api';
-import { ICard } from '../../interfaces/ICardInterfaces';
-import { useEffect, useState } from 'react';
+import { useGetCardQuery } from '../../store/reducers/apiSlice';
 import classes from './modal.module.scss';
 
 interface IModal {
   id: number;
-  active: boolean;
   setActive: (show: boolean) => void;
 }
 
-const Modal = (dataModal: IModal) => {
-  const [CardDataShow, setCardDataShow] = useState<ICard>();
+const Modal = ({ id, setActive }: IModal) => {
+  const { data } = useGetCardQuery(id);
 
-  useEffect(() => {
-    const y = async () => {
-      const oneCard = await getCard(dataModal.id);
-      setCardDataShow(oneCard);
-    };
-    y();
-  }, [dataModal]);
+  const handleClick = () => {
+    setActive(false);
+  };
 
-  if (CardDataShow) {
+  if (data) {
     return (
       <div
         className={classes.modalItem}
         onClick={() => {
-          console.log(dataModal.active);
-          dataModal.setActive(false);
+          handleClick();
         }}
       >
         <div
@@ -37,23 +29,26 @@ const Modal = (dataModal: IModal) => {
         >
           <span
             onClick={() => {
-              dataModal.setActive(false);
+              handleClick();
             }}
           >
             X
           </span>
           <div className={classes.modalConteiner}>
-            <img className={classes.modalImg} src={CardDataShow.image}></img>
+            <img className={classes.modalImg} src={data.image}></img>
             <div className={classes.descriptionCard}>
-              <p className={classes.modalTitle}>{CardDataShow.name}</p>
-              <p className={classes.modalTitle}>{CardDataShow.status}</p>
-              <p className={classes.modalTitle}>{CardDataShow.gender}</p>
-              <p className={classes.modalTitle}>{CardDataShow.type}</p>
+              <p className={classes.modalTitle}>{data.name}</p>
+              <p className={classes.modalTitle}>{data.status}</p>
+              <p className={classes.modalTitle}>{data.gender}</p>
+              <p className={classes.modalTitle}>{data.type}</p>
             </div>
           </div>
         </div>
       </div>
     );
-  } else return null;
+  }
+
+  return null;
 };
+
 export default Modal;

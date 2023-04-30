@@ -1,35 +1,22 @@
+import { useState } from 'react';
+import { useAppSelector } from '../../hooks/redux';
 import AllCards from '../../components/allCards/allCards';
 import Search from '../../components/search/search';
-import { getDataCard } from '../../components/Api/api';
-import { useEffect, useState } from 'react';
-import { ICard } from 'interfaces/ICardInterfaces';
 import Modal from '../../components/modal/modal';
-import classes from './main.module.scss';
 import Loader from '../../components/loader/loader';
 import ErrorMessage from '../../components/errorMessage/errorMessage';
+import { useGetDataQuery } from '../../store/reducers/apiSlice';
+import classes from './main.module.scss';
+
+const textError = {
+  notFound: 'Nothing found',
+};
 
 const Main = () => {
-  const [CardData, setCardData] = useState<ICard[]>([]);
-  const [textSearch, setTextSearch] = useState(localStorage.getItem('LocalStorageSearch') || '');
+  const { textSearch } = useAppSelector((state) => state.searchReducer);
   const [idD, setId] = useState<number>(0);
   const [showModal, setShowModalt] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(false);
-
-  useEffect(() => {
-    const y = async () => {
-      const d = await getDataCard(textSearch);
-      setIsLoading(false);
-      if (d) {
-        setCardData(d);
-        setErrorMessage(false);
-      } else {
-        setErrorMessage(true);
-        setCardData([]);
-      }
-    };
-    y();
-  }, [textSearch]);
+  const { data, isFetching, isError } = useGetDataQuery(textSearch);
 
   const onShowModal = (id: number) => {
     setId(id);
@@ -40,23 +27,17 @@ const Main = () => {
     setShowModalt(!showModal);
   };
 
-  const textSubmit = (text: string) => {
-    setTextSearch(text);
-    setIsLoading(true);
-  };
-
   return (
     <section className={classes.mainSection}>
-      <Search onSubmitChange={textSubmit} />
-
-      {isLoading ? (
+      <Search />
+      {isFetching ? (
         <Loader />
-      ) : errorMessage ? (
-        <ErrorMessage message={'Nothing found'} />
+      ) : isError ? (
+        <ErrorMessage message={textError.notFound} />
       ) : (
-        <AllCards onShowModal={onShowModal} results={CardData} />
+        <AllCards onShowModal={onShowModal} results={data.results} />
       )}
-      {showModal && <Modal id={idD} active={showModal} setActive={onShowModal2} />}
+      {showModal && <Modal id={idD} setActive={onShowModal2} />}
     </section>
   );
 };

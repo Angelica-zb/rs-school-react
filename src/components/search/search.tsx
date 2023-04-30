@@ -1,36 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { searchSlice } from '../../store/reducers/searchSlice';
+import { useForm } from 'react-hook-form';
 import classes from './search.module.scss';
 
-interface ISearch {
-  onSubmitChange: (value: string) => void;
-}
+const Search = () => {
+  const { textSearch } = useAppSelector((state) => state.searchReducer);
+  const { saveSearch } = searchSlice.actions;
+  const dispatch = useAppDispatch();
 
-const Search = ({ onSubmitChange }: ISearch) => {
-  const [textSearch, setSearch] = useState(localStorage.getItem('LocalStorageSearch') || '');
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      text: textSearch,
+    },
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
+  });
 
-  const changeText = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setSearch(e.target.value);
-  };
-
-  useEffect(() => {
-    localStorage.setItem('LocalStorageSearch', `${textSearch}`);
-  }, [textSearch]);
-
-  const submit = (e: React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const x = localStorage.getItem('LocalStorageSearch') || '';
-    onSubmitChange(x);
+  const submit = (d: { text: string }) => {
+    dispatch(saveSearch(d.text));
   };
 
   return (
-    <form className={classes.search} onSubmit={submit}>
-      <input
-        id="search"
-        placeholder="Введите текст"
-        type="text"
-        value={textSearch}
-        onChange={changeText}
-      />
+    <form className={classes.search} onSubmit={handleSubmit(submit)}>
+      <input id="search" placeholder="Введите текст" type="text" {...register('text')} />
       <input type="submit" value="SEARCH" />
     </form>
   );

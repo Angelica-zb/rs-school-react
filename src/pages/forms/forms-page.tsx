@@ -1,20 +1,23 @@
-import { IForms } from '../../interfaces/ICardInterfaces';
-import { useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import Forms from '../../components/formsBlank/forms';
 import UserCards from '../../components/userCards/userCards';
+import { IForms } from '../../interfaces/ICardInterfaces';
+import { formSlice } from '../../store/reducers/formSlice';
 
 const FormsPage = () => {
-  const [allData, setAllData] = useState<IForms[]>([]);
+  const { dataForm } = useAppSelector((state) => state.formReducer);
+  const { saveForm } = formSlice.actions;
+  const dispatch = useAppDispatch();
 
   const submit = (data: IForms) => {
-    setAllData([...allData, data]);
+    dispatch(saveForm(data));
   };
 
   return (
     <>
       <Forms onSubmitPage={submit}></Forms>
       <div>
-        <UserCards allCards={allData} />
+        <UserCards allCards={dataForm} />
       </div>
     </>
   );

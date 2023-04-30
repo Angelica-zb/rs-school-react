@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import classes from './Header.module.scss';
 import pageData from '../../constants/constants';
+import classes from './Header.module.scss';
 
 const getTitle = () => {
-  let title = pageData.pageTitle[2];
+  let title = pageData.pageTitle.error;
   const url = location.pathname;
 
-  if (url === pageData.pagePath[0]) {
-    title = pageData.pageTitle[0];
-  } else if (url === pageData.pagePath[1]) {
-    title = pageData.pageTitle[1];
-  } else if (url === pageData.pagePath[2]) {
-    title = pageData.pageTitle[3];
+  if (url === pageData.pagePath.main) {
+    title = pageData.pageTitle.main;
+  } else if (url === pageData.pagePath.about) {
+    title = pageData.pageTitle.about;
+  } else if (url === pageData.pagePath.form) {
+    title = pageData.pageTitle.form;
   }
 
   return title;
@@ -30,17 +30,26 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <NavLink to={pageData.pagePath[0]} onClick={() => changeTitle(pageData.pageTitle[0])}>
+            <NavLink
+              to={pageData.pagePath.main}
+              onClick={() => changeTitle(pageData.pageTitle.main)}
+            >
               Main
             </NavLink>
           </li>
           <li>
-            <NavLink to={pageData.pagePath[1]} onClick={() => changeTitle(pageData.pageTitle[1])}>
+            <NavLink
+              to={pageData.pagePath.about}
+              onClick={() => changeTitle(pageData.pageTitle.about)}
+            >
               About Us
             </NavLink>
           </li>
           <li>
-            <NavLink to={pageData.pagePath[2]} onClick={() => changeTitle(pageData.pageTitle[3])}>
+            <NavLink
+              to={pageData.pagePath.form}
+              onClick={() => changeTitle(pageData.pageTitle.form)}
+            >
               Forms
             </NavLink>
           </li>
